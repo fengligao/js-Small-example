@@ -1,0 +1,263 @@
+@import "base.css";
+.demo_one{
+    width: 1226px;
+    height: 30px;
+    margin: 0 auto;
+    color: #000;
+    font-size: 24px;
+    font-weight: bold;
+}
+.demo_text{
+    width: 1226px;
+    margin: 0 auto;
+}
+.demo_text .demo_title{
+    display: block;
+}
+.demo_text img{
+    width: 50%;
+}
+.banner-container {
+    width: 1226px;
+    height: 460px;
+    margin: 20px auto;
+    position: relative;
+}
+
+.img-container {
+    width: 100%;
+    height: 100%;
+}
+
+.img-container li {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: all 1s;
+}
+
+.img-container li a {
+    display: block;
+}
+
+.img-container img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.img-container .active {
+    opacity: 1;
+    display: block;
+}
+
+.page-container {
+    width: 120px;
+    height: 10px;
+    position: absolute;
+    right: 100px;
+    bottom: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.page-container li {
+    width: 10px;
+    height: 10px;
+    background: #ccc;
+    border-radius: 50%;
+    border: 1px solid #333;
+    cursor: pointer;
+    z-index: 999;
+}
+
+.page-container .active {
+    background: #fff;
+}
+
+.zy_lr {
+    width: 60px;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+    color: #333333;
+    background: rgba(0, 0, 0, .2);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    cursor: pointer;
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}
+
+.prev:hover {
+    color: #ffffff;
+    background: rgba(0, 0, 0, .8);
+    transition: all .8s ease;
+}
+
+.next:hover {
+    color: #ffffff;
+    background: rgba(0, 0, 0, .8);
+    transition: all .8s ease;
+}
+
+.box {
+    width: 1202px;
+    height: 500px;
+    border: 1px solid #000;
+    margin: 10px auto;
+    padding-top: 10px;
+}
+
+.box_son {
+    width: 300px;
+    height: 480px;
+    border: 1px solid #333;
+    float: left;
+    overflow: hidden;
+    position: relative;
+}
+
+.son {
+    width: 1200px;
+    height: 480px;
+    transition: all .8s ease;
+}
+
+.son li {
+    width: 300px;
+    height: 480px;
+    background: #eee;
+    float: left;
+    text-align: center;
+    line-height: 480px;
+    font-size: 60px;
+    color: #aaa;
+}
+
+.box_son .jt {
+    width: 60px;
+    height: 100px;
+    background: rgba(0, 0, 0, .3);
+    text-align: center;
+    line-height: 100px;
+    font-size: 20px;
+    color: #000;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    cursor: pointer;
+}
+
+.jt.pl {
+    left: 0;
+}
+
+.jt.nr {
+    right: 0;
+}
+
+.btn {
+    width: 100%;
+    height: 30px;
+    position: absolute;
+    left: 0;
+    bottom: 30px;
+    z-index: 111;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn li {
+    width: 30px;
+    height: 30px;
+    background: #fff;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.btn li:hover {
+    background: orange;
+    transition: all .5s ease;
+}
+
+.btn li.active {
+    border: 2px solid orange;
+    background: #ffffff;
+}
+
+.table {
+    width: 100%;
+}
+
+.table_box {
+    width: 1202px;
+    height: 500px;
+    margin: 10px auto;
+}
+
+.title {
+    width: 100%;
+    height: 100px;
+    background: #cccccc;
+}
+
+.title_box {
+    float: right;
+    height: 100%;
+}
+
+.title_box li {
+    width: 100px;
+    height: 100px;
+    background: #cccccc;
+    float: left;
+    line-height: 100px;
+    text-align: center;
+    border: 1px solid #333333;
+}
+
+.title_box li.hot {
+    background: orchid;
+    color: orangered;
+    border: 1px solid orange;
+    transition: all .8s ease;
+}
+
+.content {
+    width: 100%;
+    height: 400px;
+}
+
+.content_box {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.content_box li {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 500px;
+    position: absolute;
+    background: #808080;
+}
+
+.content_box li.active {
+    background: orchid;
+    z-index: 9999;
+    transition: all .8s ease;
+}
