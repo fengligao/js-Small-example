@@ -2,38 +2,117 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="css/index.css">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Js 小例子</title>
+    <link rel="icon" href="./img/b.jpg">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        box-sizing: border-box;
+    }
+
     a {
         text-decoration: none;
+    }
+
+    html, body {
+        width: 100%;
+        background: #cccccc;
+    }
+
+    .matter {
+        width: 70%;
+        height: 100%;
+        background: #1d0047;
+        margin: 0 auto;
+    }
+
+    .matter .title {
+        width: 100%;
+        padding: 0 50px;
+        background: rgba(185, 204, 199, 0.15);
+        line-height: 80px;
+        color: rgba(106, 107, 105, 0.89);
+    }
+
+    .matter_son {
+        width: 100%;
+    }
+
+    .matter_son li {
+        width: 100%;
+        /*height: 80px;*/
+        padding: 5px 20px;
+    }
+
+    .matter_son li a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        line-height: 80px;
+        color: rgb(255, 231, 130);
         font-size: 30px;
     }
 
-    h1 {
-        height: 50px;
-        background: #cccccc;
-        margin: 0 auto;
-        padding: 0 100px;
+    .matter_son li a:hover {
+        text-decoration: none;
+        color: #ffffff;
+        background: rgba(255, 0, 15, .1);
+        transition: all .8s ease;
+    }
+
+    .logo {
+        width: 100px;
+        height: 100px;
+        background: rgba(255,255,255,.6);
+        border: 2px solid #000000;
+        position: fixed;
+        right: 80px;
+        bottom: 80px;
+        z-index: 9999;
+    }
+
+    .logo img {
+        display: block;
+        width: 100%;
+        height: 100%;
     }
 </style>
 <body>
-<h1><a href="lunbo.html"> * 轮播图例子</a></h1>
-<h1><a href="scroll.html"> * scroll楼层跳转</a></h1>
-<h1><a href="functionDemo.html"> * 点击轮播封装的函数</a></h1>
-<h1><a href="xuanxiangkaDemo.html"> * 选项卡封装函数</a></h1>
+<div class="container matter">
+    <h1 class="title">Js 小例子展示</h1>
+    <ul class="matter_son">
+        <li>
+            <a href="lunbo.html">> 1.轮播图小例子</a>
+        </li>
+        <li>
+            <a href="functionDemo.html">> 2.点击轮播封装函数</a>
+        </li>
+        <li>
+            <a href="xuanxiangkaDemo.html">> 3.选项卡鼠标移入移出事件</a>
+        </li>
+        <li>
+            <a href="scroll.html">> 4.scroll事件+楼层跳转</a>
+        </li>
+        <li>
+            <a href="Domjiedian.html">> 5.操作DOM节点小动画</a>
+        </li>
+        <li>
+            <a href="wufenglunbo.html">> 6.无缝轮播图的实现</a>
+        </li>
+    </ul>
+    <div class="logo">
+        <img src="./img/b.png" alt="">
+    </div>
+</div>
 </body>
 </html>
 <script>
-
-
-    ///////////////////////////////////////////////////
-
-    /////////////////////////////////////////////////
-
-
-
-    ///////////////////////////////
 
 </script>

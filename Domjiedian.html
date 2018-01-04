@@ -6,12 +6,103 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="icon" href="./img/b.jpg">
 </head>
+<style>
+    .startBtn {
+        width: 80px;
+        height: 40px;
+        background: orangered;
+        border-radius: 15px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        text-align: center;
+        line-height: 40px;
+        font-size: 16px;
+        color: #ffffff;
+        cursor: pointer;
+    }
+
+    .animaBox {
+        width: 80px;
+        height: 80px;
+        /*border: 1px solid #000000;*/
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+    }
+
+    .ball {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #000000;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: all 1s ease;
+    }
+</style>
 <body>
 
 </body>
 </html>
 <script>
     let startBtn = document.createElement("div");
+    let cw = window.innerWidth, ch = window.innerHeight;
+    document.body.appendChild(startBtn);
     startBtn.className = "startBtn";
+    startBtn.innerHTML = "START";
+    startBtn.onclick = function () {
+        document.body.removeChild(this);
+        let animaBox = document.createElement("div");
+        animaBox.className = "animaBox";
+        document.body.appendChild(animaBox);
+        for (let i = 0; i < 40; i++) {
+            let ball = document.createElement("div");
+            let lefts, tops;
+            ball.className = "ball";
+            do {
+                lefts = Math.random() * (cw - 80) - (cw - 80) / 2; //随机位置
+                tops = Math.random() * (ch - 80) - (ch - 80) / 2; //随机位置
+            } while (checkPos(PosArr, {l: lefts, t: tops}));
+            PosArr.push({lefts, tops});
+            ball.style.background = getColor();
+            setTimeout(function () {
+                ball.style.left = lefts + "px";
+                ball.style.top = tops + "px";
+            }, 100);
+            animaBox.appendChild(ball);
+        }
+    };
+    //////随机颜色的产生
+    let colorArr = [6, 9, 1, 3, 5, "c"];
+
+    function getColor() {
+        let color = "#";
+        for (let i = 0; i < 3; i++) {
+            let num = Math.floor(Math.random() * colorArr.length);
+            color += colorArr[num];
+        }
+        return color;
+    }
+
+    //////随机位置不重复的方法
+    let PosArr = [];
+
+    function checkPos(arr, obj) {
+        let lt = arr.some(function (value) {
+            if (obj.l > value.lefts - 100 && obj.l < value.lefts + 100 && obj.t > value.tops - 100 && obj.t < value.tops + 100) {
+                return true;
+            }
+        })
+        return lt;
+    }
 </script>
