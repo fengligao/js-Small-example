@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<section class="box">
+    <div class="box_son">
+        <ul class="son">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <ul class="btn">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="jt pl"> <</div>
+        <div class="jt nr"> ></div>
+    </div>
+    <div class="box_son">
+        <ul class="son">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <ul class="btn">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="jt pl"> <</div>
+        <div class="jt nr"> ></div>
+    </div>
+    <div class="box_son">
+        <ul class="son">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+        <ul class="btn">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="jt pl"> <</div>
+        <div class="jt nr"> ></div>
+    </div>
+    <div class="box_son">
+        <ul class="son">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <ul class="btn">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="jt pl"> <</div>
+        <div class="jt nr"> ></div>
+    </div>
+</section>
+</body>
+</html>
+<script>
+    let lists = document.querySelectorAll(".box_son");
+    lists.forEach(function (ele) {
+        contentFn(ele);
+    });
+
+    function contentFn(context) {
+        let pl = context.querySelector(".pl");
+        let nr = context.querySelector(".nr");
+        let son = context.querySelector(".son");
+        let btns = context.querySelectorAll(".btn li");
+        let sonLi = context.querySelectorAll(".son li");
+        let max = sonLi.length;
+        let m = 0;
+        nr.onclick = function () {
+            m++;
+            if (m >= max) {
+                m = max - 1;
+                return;
+            }
+            for (let i = 0; i < btns.length; i++) {
+                btns[i].classList.remove("active");
+            }
+            btns[m].classList.add("active");
+            son.style.marginLeft = -m * 300 + "px";
+        };
+        pl.onclick = function () {
+            m--;
+            if (m < 0) {
+                m = 0;
+                return;
+            }
+            for (let i = 0; i < btns.length; i++) {
+                btns[i].classList.remove("active");
+            }
+            btns[m].classList.add("active");
+            son.style.marginLeft = -m * 300 + "px";
+        };
+        btns.forEach(function (val, ind) {
+            val.onclick = function () {
+                for (let i = 0; i < btns.length; i++) {
+                    btns[i].classList.remove("active");
+                }
+                btns[ind].classList.add("active");
+                son.style.marginLeft = -ind * 300 + "px";
+                m = ind;
+            }
+        });
+    }
+
+</script>

@@ -1,5 +1,7 @@
 @import "base.css";
-.demo_one{
+
+
+.demo_one {
     width: 1226px;
     height: 30px;
     margin: 0 auto;
@@ -7,16 +9,20 @@
     font-size: 24px;
     font-weight: bold;
 }
-.demo_text{
+
+.demo_text {
     width: 1226px;
     margin: 0 auto;
 }
-.demo_text .demo_title{
+
+.demo_text .demo_title {
     display: block;
 }
-.demo_text img{
+
+.demo_text img {
     width: 50%;
 }
+
 .banner-container {
     width: 1226px;
     height: 460px;

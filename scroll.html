@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<style>
+    .topbar {
+        width: 100%;
+        height: 80px;
+        background: rgba(255, 236, 17, 0.9);
+        position: fixed;
+        top: -80px;
+        left: 0;
+        z-index: 99999;
+        /*display: none;*/
+        transition: all .8s ease;
+    }
+
+    .topbar_son {
+        outline: none;
+        display: block;
+        padding: 0 50px;
+        width: 500px;
+        height: 100%;
+        margin: 0 auto;
+    }
+
+    #totop {
+        width: 40px;
+        padding: 3px 1px;
+        background: red;
+        position: fixed;
+        bottom: 50px;
+        right: 50px;
+        z-index: 999999;
+        color: #ffffff;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .banner {
+        width: 1226px;
+        height: 500px;
+        border: 1px solid #000000;
+        margin: 0 auto;
+        margin-top: 100px;
+        text-align: center;
+        line-height: 500px;
+        color: #000;
+        font-size: 50px;
+        font-weight: bold;
+    }
+
+    .floor {
+        width: 1100px;
+        height: 500px;
+        border: 1px solid #000000;
+        margin: 10px auto;
+        text-align: center;
+        line-height: 500px;
+        color: #000;
+        font-size: 50px;
+        font-weight: bold;
+    }
+
+    .leftbar {
+        width: 50px;
+        height: 250px;
+        background: #ffffff;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        left: 50%;
+        margin-left: -610px;
+        opacity: 0;
+        transition: all .8s ease;
+    }
+
+    .leftbar li {
+        width: 50px;
+        height: 50px;
+        box-sizing: border-box;
+        border: 1px solid #cccccc;
+        text-align: center;
+        line-height: 50px;
+        cursor: pointer;
+    }
+
+    .leftbar li.active {
+        background: yellow;
+        /*transition: all .8s ease;*/
+    }
+
+    .footer {
+        width: 1226px;
+        height: 500px;
+        border: 1px solid #000000;
+        margin: 30px auto;
+        text-align: center;
+        line-height: 500px;
+        color: #000;
+        font-size: 50px;
+        font-weight: bold;
+    }
+</style>
+<body>
+<!--topbar-->
+<div class="topbar">
+    <input type="text" class="topbar_son" placeholder="嗖嗖嗖">
+</div>
+<div id="totop">
+    返回顶部
+</div>
+<div class="banner">
+    Banner
+</div>
+<div class="floor">
+    one floor
+</div>
+<div class="floor">
+    two floor
+</div>
+<div class="floor">
+    three floor
+</div>
+<div class="floor">
+    four floor
+</div>
+<div class="floor">
+    five floor
+</div>
+<ul class="leftbar">
+    <li class="active">1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+</ul>
+<div class="footer">
+    Footer
+</div>
+</body>
+</html>
+<script>
+    //topbar 效果   顶部搜索效果
+    let topBar = document.querySelector(".topbar");
+    let leftBar = document.querySelector(".leftbar");
+    window.onscroll = function () {
+        let topBarTop = document.documentElement.scrollTop;
+        if (topBarTop > 550) {
+            //topBar.style.display = "block"; //display 方法显示
+            topBar.style.top = 0 + "px";
+        } else {
+            //topBar.style.display = "none"; //display 放啊隐藏
+            topBar.style.top = -80 + "px";
+        }
+        if (topBarTop > 500) {
+            leftBar.style.opacity = 1;
+        } else {
+            leftBar.style.opacity = 0;
+        }
+        floors.forEach(function (ele, ind) {
+            flag = false;
+            if (topBarTop >= ele.offsetTop) {
+                for (let i = 0; i < btns.length; i++) {
+                    btns[i].classList.remove("active");
+                }
+                btns[ind].classList.add("active");
+            }
+        });
+    };
+    /////////////////////
+    //totop  返回顶部效果
+    let toTop = document.querySelector("#totop");
+    toTop.onclick = function () {
+        let st = document.documentElement.scrollTop;
+        let speed = 30 * st / 500;
+        console.log(speed);
+        let returnTop = setInterval(function () {
+            st -= speed;
+            if (st <= 0) {
+                st = 0;
+                clearInterval(returnTop);
+            }
+            document.documentElement.scrollTop = st;
+        }, 30);
+    }
+    ////////////////////
+    //楼层跳转
+    let btns = document.querySelectorAll(".leftbar li");
+    let floors = document.querySelectorAll(".floor");
+    let flag = true;
+    btns.forEach(function (ele, index) {
+        ele.onclick = function () {
+            let target = floors[index].offsetTop;
+            let now = document.documentElement.scrollTop;
+            let speed = (target - now) * 30 / 300;
+            let time = 0;
+            let t = setInterval(function () {
+                now += speed;
+                time += 30;
+                if (time === 300) {
+                    clearInterval(t);
+                    now = target;
+                }
+                document.documentElement.scrollTop = now;
+            }, 30);
+        }
+    });
+</script>

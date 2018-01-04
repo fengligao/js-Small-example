@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .banner {
+        width: 1260px;
+        height: 460px;
+        margin: 50px auto;
+        border: 1px solid #ff341d;
+        overflow: hidden;
+    }
+
+    .bannerBox {
+        width: 7560px;
+        height: 460px;
+        transition: all 1s ease;
+    }
+
+    .bannerBox li {
+        width: 1260px;
+        height: 460px;
+        float: left;
+    }
+
+    .bannerBox li img {
+        width: 100%;
+        height: 100%;
+    }
+</style>
+<body>
+<div class="banner">
+    <ul class="bannerBox">
+        <li><img src="./img/1.jpg" alt=""></li>
+        <li><img src="./img/2.jpg" alt=""></li>
+        <li><img src="./img/3.jpg" alt=""></li>
+        <li><img src="./img/4.jpg" alt=""></li>
+        <li><img src="./img/5.jpg" alt=""></li>
+        <li><img src="./img/1.jpg" alt=""></li>
+    </ul>
+</div>
+</body>
+</html>
+<script>
+    let banner = document.querySelector(".bannerBox");
+    let length = document.querySelectorAll(".bannerBox li").length;
+    let num = 0;
+    let t = setInterval(function () {
+        num++;
+        if (num === 1) {
+            banner.style.transition = "all 1s ease";
+        }
+        banner.style.marginLeft = -num * 1260 + "px";
+    }, 1100);
+    banner.addEventListener("transitionend", function () {
+        if (num === length - 1) {
+            banner.style.transition = "none";
+            banner.style.marginLeft = 0;
+            num = 0;
+        }
+    })
+
+</script>
