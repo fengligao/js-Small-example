@@ -166,15 +166,17 @@
         } else {
             leftBar.style.opacity = 0;
         }
-        floors.forEach(function (ele, ind) {
-            flag = false;
-            if (topBarTop >= ele.offsetTop) {
-                for (let i = 0; i < btns.length; i++) {
-                    btns[i].classList.remove("active");
+        if (flag) {
+
+            floors.forEach(function (ele, ind) {
+                if (topBarTop >= ele.offsetTop) {
+                    for (let i = 0; i < btns.length; i++) {
+                        btns[i].classList.remove("active");
+                    }
+                    btns[ind].classList.add("active");
                 }
-                btns[ind].classList.add("active");
-            }
-        });
+            });
+        }
     };
     /////////////////////
     //totop  返回顶部效果
@@ -182,7 +184,6 @@
     toTop.onclick = function () {
         let st = document.documentElement.scrollTop;
         let speed = 30 * st / 500;
-        console.log(speed);
         let returnTop = setInterval(function () {
             st -= speed;
             if (st <= 0) {
@@ -209,6 +210,7 @@
                 if (time === 300) {
                     clearInterval(t);
                     now = target;
+                    flag = true;
                 }
                 document.documentElement.scrollTop = now;
             }, 30);

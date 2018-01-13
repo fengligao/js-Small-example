@@ -9,6 +9,12 @@
     <link rel="icon" href="./img/b.jpg">
     <link rel="stylesheet" href="css/index.css">
 </head>
+<style>
+    #textarea {
+        display: block;
+        margin: 30px 0 0 150px;
+    }
+</style>
 <body>
 <!--banner图部分-->
 <p class="demo_one">第一个例子 轮播图</p>
@@ -32,185 +38,198 @@
         <div class="zy_lr next">&gt;</div>
     </div>
 </section>
-<p class="demo_text">
-    <span class="demo_title">这是html代码:</span>
-    <img src="./img/lunbo_demo.png" alt="">
-</p>
-<p class="demo_text">
-    <span class="demo_title">这是css代码:</span>
-    .banner-container { <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;width: 1226px; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;height: 460px; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;margin: 20px auto; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;position: relative; <br>
-    } <br>
+<p class="demo_one">这是示例代码:</p>
+<textarea id="textarea" name="" id="" cols="80" rows="80" disabled>
 
-    .img-container { <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;width: 100%; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;height: 100%; <br>
-    } <br>
+    -> 这是html代码:
+        <section class="banner-container">
+            <ul class="img-container">
+                <li class="active"><a href="#"><img src="img/1.jpg" alt=""></a></li>
+                <li><a href="#"><img src="img/2.jpg" alt=""></a></li>
+                <li><a href="#"><img src="img/3.jpg" alt=""></a></li>
+                <li><a href="#"><img src="img/4.jpg" alt=""></a></li>
+                <li><a href="#"><img src="img/5.jpg" alt=""></a></li>
+            </ul>
+            <ul class="page-container">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <div class="zy">
+                <div class="zy_lr prev">&lt;</div>
+                <div class="zy_lr next">&gt;</div>
+            </div>
+        </section>
 
-    .img-container li { <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;width: 100%; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;height: 100%; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;position: absolute; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;top: 0; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;left: 0; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;opacity: 0; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;transition: all 1s; <br>
-    } <br>
+    ->这是css代码:
 
-    .img-container li a { <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;display: block; <br>
-    } <br>
+        .banner-container {
+            width: 1226px;
+            height: 460px;
+            margin: 20px auto;
+            position: relative;
+        }
 
-    .img-container img { <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;display: block; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;width: 100%; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;height: 100%; <br>
-    } <br>
+        .img-container {
+            width: 100%;
+            height: 100%;
+        }
 
-    .img-container .active { <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;opacity: 1; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;display: block; <br>
-    } <br>
+        .img-container li {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: all 1s;
+        }
 
-    .page-container { <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;width: 120px; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;height: 10px; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;position: absolute; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;right: 100px; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;bottom: 20px; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;display: flex; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;justify-content: space-around; <br>
-    } <br>
+        .img-container li a {
+            display: block;
+        }
 
-    .page-container li { <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;width: 10px; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;height: 10px; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;background: #ccc; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;border-radius: 50%; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;border: 1px solid #333; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;cursor: pointer; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;z-index: 999; <br>
-    } <br>
+        .img-container img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
 
-    .page-container .active { <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;background: #fff; <br>
-    } <br>
+        .img-container .active {
+            opacity: 1;
+            display: block;
+        }
 
-    .zy_lr { <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;width: 60px; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;height: 100px; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;text-align: center; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;line-height: 100px; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;color: #333333; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;background: rgba(0, 0, 0, .2); <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;position: absolute; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;top: 0; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;bottom: 0; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;margin: auto; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;cursor: pointer; <br>
-    } <br>
+        .page-container {
+            width: 120px;
+            height: 10px;
+            position: absolute;
+            right: 100px;
+            bottom: 20px;
+            display: flex;
+            justify-content: space-around;
+        }
 
-    .prev { <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;left: 0; <br>
-    } <br>
+        .page-container li {
+            width: 10px;
+            height: 10px;
+            background: #ccc;
+            border-radius: 50%;
+            border: 1px solid #333;
+            cursor: pointer;
+            z-index: 999;
+        }
 
-    .next { <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;right: 0; <br>
-    } <br>
+        .page-container .active {
+            background: #fff;
+        }
 
-    .prev:hover { <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;color: #ffffff; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;background: rgba(0, 0, 0, .8); <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;transition: all .8s ease; <br>
-    } <br>
+        .zy_lr {
+            width: 60px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            color: #333333;
+            background: rgba(0, 0, 0, .2);
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            cursor: pointer;
+        }
 
-    .next:hover { <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;color: #ffffff; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;background: rgba(0, 0, 0, .8); <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;transition: all .8s ease; <br>
-    } <br>
+        .prev {
+            left: 0;
+        }
 
-</p>
-<p class="demo_text">
-    <span class="demo_title">这是js代码:</span>
-    let imgs = document.querySelectorAll(".img-container li"); //获取到全部图片li<br>
-    let pages = document.querySelectorAll(".page-container li"); //获取到全部的圆点<br>
-    let bannerContainer = document.querySelector(".banner-container"); <br>
-    pages.forEach(function (value, index) { <br> //遍历圆点
-    &nbsp;&nbsp;value.onclick = function () { <br> //给每个圆点添加点击事件
-    &nbsp;&nbsp;&nbsp;&nbsp;for (let i = 0; i < pages.length; i++) { //轮播效果移除所有的类<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pages[i].classList.remove("active"); <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imgs[i].classList.remove("active"); <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;} <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;this.classList.add("active"); //给当前这个添加类<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;imgs[index].classList.add("active"); <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;n = index; //把当前的下标赋值给n<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;} <br>
-    }); <br>
-    let n = 0; <br>
-    // 自动轮播函数
-    function bannerFn(dir = "right") { <br>
-    &nbsp;&nbsp;if (dir === "right") { <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;n++; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;if (n === pages.length) { <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n = 0; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;} <br>
-    &nbsp;&nbsp;} <br>
-    &nbsp;&nbsp;if (dir === "left") { <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;n--; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;if (n === -1) { <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n = pages.length - 1; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;} <br>
-    &nbsp;&nbsp;} <br>
+        .next {
+            right: 0;
+        }
 
-    &nbsp;&nbsp;for (let i = 0; i < pages.length; i++) { <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;pages[i].classList.remove("active"); <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;imgs[i].classList.remove("active"); <br>
-    &nbsp;&nbsp;} <br>
-    &nbsp;&nbsp;pages[n].classList.add("active"); <br>
-    &nbsp;&nbsp;imgs[n].classList.add("active"); <br>
-    } <br>
-    //时间(定时器)函数 在规定的时间周期内 执行一次函数
-    let t = setInterval(bannerFn, 3000); <br>
-    // 鼠标移入的时候 清除时间函数
-    bannerContainer.onmouseover = function () { <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;clearInterval(t); <br>
-    }; <br>
-    //鼠标移除重新调用时间函数
-    bannerContainer.onmouseout = function () { <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;t = setInterval(bannerFn, 3000); <br>
-    }; <br>
-    //获取到左右箭头
-    let prev = document.querySelector(".prev"); <br>
-    let next = document.querySelector(".next"); <br>
-    let flag = true; <br> //开关
-    //点击下一张
-    next.onclick = function () { <br>
-    &nbsp;&nbsp;&nbsp;//点击时判断开关状态 开始是true点击是让他为false 当前点击执行完毕，才能进行下次点击
-    &nbsp;&nbsp;if (flag) { <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;flag = false; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;bannerFn(); <br>
-    &nbsp;&nbsp;} <br>
-    }; <br>
-    //点击上一张
-    prev.onclick = function () { <br>
-    &nbsp;&nbsp;if (flag) { <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;flag = false; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;bannerFn("left"); <br>
-    &nbsp;&nbsp;} <br>
-    }; <br>
-    //遍历给每个图片添加默认事件
-    imgs.forEach(function (value) { <br>
-    //添加事件监听没次执行完之后调用指定函数 <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;value.addEventListener("transitionend", function () { <br>
-    //将开关打开
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;flag = true; <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;}); <br>
-    }); <br>
-</p>
+        .prev:hover {
+            color: #ffffff;
+            background: rgba(0, 0, 0, .8);
+            transition: all .8s ease;
+        }
+
+        .next:hover {
+            color: #ffffff;
+            background: rgba(0, 0, 0, .8);
+            transition: all .8s ease;
+        }
+
+    ->这是js代码:
+
+        let imgs = document.querySelectorAll(".img-container li");
+        let pages = document.querySelectorAll(".page-container li");
+        let bannerContainer = document.querySelector(".banner-container");
+        pages.forEach(function (value, index) {
+            value.onclick = function () {
+                for (let i = 0; i < pages.length; i++) {
+                    pages[i].classList.remove("active");
+                    imgs[i].classList.remove("active");
+                }
+                this.classList.add("active");
+                imgs[index].classList.add("active");
+                n = index;
+            }
+        });
+        let n = 0;
+
+        function bannerFn(dir = "right") {
+            if (dir === "right") {
+                n++;
+                if (n === pages.length) {
+                    n = 0;
+                }
+            }
+            if (dir === "left") {
+                n--;
+                if (n === -1) {
+                    n = pages.length - 1;
+                }
+            }
+
+            for (let i = 0; i < pages.length; i++) {
+                pages[i].classList.remove("active");
+                imgs[i].classList.remove("active");
+            }
+            pages[n].classList.add("active");
+            imgs[n].classList.add("active");
+        }
+
+        let t = setInterval(bannerFn, 3000);
+        bannerContainer.onmouseover = function () {
+            clearInterval(t);
+        };
+        bannerContainer.onmouseout = function () {
+            t = setInterval(bannerFn, 3000);
+        };
+
+        let prev = document.querySelector(".prev");
+        let next = document.querySelector(".next");
+        let flag = true;
+        next.onclick = function () {
+            if (flag) {
+                flag = false;
+                bannerFn();
+            }
+        };
+        prev.onclick = function () {
+            if (flag) {
+                flag = false;
+                bannerFn("left");
+            }
+        };
+        imgs.forEach(function (value) {
+            value.addEventListener("transitionend", function () {
+                flag = true;
+            });
+        });
+
+</textarea>
 <br>
 <br>
 <br>

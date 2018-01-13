@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>无缝轮播+左右点击</title>
+    <link rel="icon" href="./img/b.jpg">
+</head>
+<style>
+    @font-face {
+        font-family: 'iconfont';  /* project id 531396 */
+        src: url('//at.alicdn.com/t/font_531396_p927h10vdhv0lik9.eot');
+        src: url('//at.alicdn.com/t/font_531396_p927h10vdhv0lik9.eot?#iefix') format('embedded-opentype'),
+        url('//at.alicdn.com/t/font_531396_p927h10vdhv0lik9.woff') format('woff'),
+        url('//at.alicdn.com/t/font_531396_p927h10vdhv0lik9.ttf') format('truetype'),
+        url('//at.alicdn.com/t/font_531396_p927h10vdhv0lik9.svg#iconfont') format('svg');
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .banner {
+        position: relative;
+        width: 1230px;
+        height: 400px;
+        margin: 50px auto;
+        border: 1px solid orangered;
+        overflow: hidden;
+    }
+
+    .bannerBox {
+        width: 5000px;
+        height: 100%;
+        transition: all 1s ease;
+        margin-left: -1240px;
+    }
+
+    .bannerBox li {
+        float: left;
+        width: 300px;
+        height: 100%;
+        background: #cccccc;
+        margin-right: 10px;
+        text-align: center;
+        line-height: 400px;
+        font-size: 80px;
+        color: #000;
+    }
+
+    .prev, .next {
+        width: 50px;
+        height: 50px;
+        background: #ffffff;
+        font-family: iconfont;
+        font-size: 20px;
+        color: #000;
+        font-weight: bold;
+        text-align: center;
+        line-height: 50px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        cursor: pointer;
+    }
+
+    .prev {
+        left: 0;
+    }
+
+    .next {
+        right: 0;
+    }
+</style>
+<script>
+    window.onload = function () {
+        let banner = document.querySelector(".banner");
+        let bannerBox = document.querySelector(".bannerBox");
+        let prev = document.querySelector(".prev");
+        let next = document.querySelector(".next");
+        let n = 4;
+        let dir = "right";
+
+        function moveFn() {
+            bannerBox.style.transition = "all 1s ease";
+            if (dir === "right") {
+                n++;
+            } else if (dir === "left") {
+                n--;
+            }
+            bannerBox.style.marginLeft = -n * 310 + "px";
+        }
+
+        bannerBox.addEventListener("transitionend", function () {
+            flag = true;
+            if (n === 11) {
+                bannerBox.style.transition = "none";
+                bannerBox.style.marginLeft = "-1240px";
+                n = 4;
+            }
+            if (n === 0) {
+                bannerBox.style.transition = "none";
+                bannerBox.style.marginLeft = "-2170px";
+                n = 7;
+            }
+        });
+        let t = setInterval(moveFn, 2000);
+        let flag = true;
+        prev.onclick = function () {
+            if (flag) {
+                flag = false;
+                dir = "left";
+                moveFn();
+            }
+        };
+        next.onclick = function () {
+            if (flag) {
+                flag = false;
+                dir = "right";
+                moveFn();
+            }
+        };
+        banner.onmouseover = function () {
+            clearInterval(t);
+        };
+        banner.onmouseout = function () {
+            t = setInterval(moveFn, 2000);
+        };
+        window.onfocus = function () {
+            t = setInterval(moveFn, 2000);
+        };
+        window.onblur = function () {
+            clearInterval(t);
+        }
+    }
+</script>
+<body>
+<div class="banner">
+    <ul class="bannerBox">
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <div class="prev">&#xe61b;</div>
+    <div class="next">&#xe679;</div>
+</div>
+</body>
+</html>

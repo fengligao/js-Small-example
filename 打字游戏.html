@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<style>
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		font-style: normal;
+	}
+
+	.meu {
+		padding: 0 20px;
+		position: fixed;
+		top: 0;
+		width: 1000px;
+		height: 30px;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+		display: flex;
+		justify-content: space-between;
+		line-height: 30px;
+		color: white;
+		font-size: 16px;
+		z-index: 999;
+		background: #000111;
+	}
+
+	html,
+	body {
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		background: #082d8a;
+	}
+
+	.cj {
+		border-radius: 10px;
+		width: 1000px;
+		height: 100%;
+		margin: 0 auto;
+		position: relative;
+		/* background: url(img/bj.jpg) no-repeat center center; */
+		/* background-size: 100% 100%; */
+		box-shadow: 0 0 10px 10px #000;
+	}
+
+	.ks,
+	.js {
+		width: 300px;
+		height: 300px;
+		/*background: ;*/
+		position: fixed;
+		left: calc(50% - 150px);
+		top: calc(50% - 150px);
+		box-sizing: border-box;
+		border-radius: 80px;
+		/*border:10px solid gainsboro;*/
+	}
+
+	.ks {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.ks span {
+		display: block;
+		width: 250px;
+		height: 100px;
+		text-align: center;
+		line-height: 100px;
+		/* background: url(img/kaishi.png) no-repeat center center; */
+		background-size: 100% 100%;
+		color: aqua;
+		font-weight: 700;
+		cursor: pointer;
+		font-size: 24px;
+		font-family: "新宋体";
+		letter-spacing: 5px;
+	}
+
+	.js {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		/* background: url(img/jieshu.png) no-repeat center center; */
+		background-size: 150% 150%;
+		display: none;
+	}
+
+	.cj .zm {
+		border: 1px solid salmon;
+		background: #fff;
+		width: 80px;
+		height: 80px;
+		position: absolute;
+		color: #FA8072;
+		font-size: 20px;
+		font-weight: bold;
+		line-height: 80px;
+		text-align: center;
+		border-radius: 50%;
+	}
+
+	#df,
+	#gk,
+	#sm {
+		color: green;
+	}
+
+	.endnum {
+		margin-top: 40px;
+		color: black;
+		font-size: 20px;
+		font-weight: bold;
+		cursor: default;
+		-webkit-user-select: none;
+	}
+
+	.js .btn {
+		display: flex;
+	}
+
+	.js .btn span {
+		-webkit-user-select: none;
+		cursor: pointer;
+		border-radius: 20px;
+		display: block;
+		width: 70px;
+		height: 30px;
+		margin-right: 10px;
+		text-align: center;
+		background: green;
+		color: #fff;
+		font-size: 16px;
+		line-height: 30px;
+		margin-top: 70px;
+		font-weight: bold;
+		box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
+		font-family: gadget;
+		letter-spacing: 3px;
+	}
+
+	.js .btn span:last-child {
+		margin-right: 0;
+	}
+</style>
+
+<body>
+	<div class="meu">
+		<div class="gk">
+			<span>关卡：</span><span id="gk">1</span>
+		</div>
+		<div class="sm">
+			<span>生命：</span><span id="sm">5</span>
+		</div>
+		<div class="df">
+			<span>得分：</span><span id="df">0</span>
+		</div>
+	</div>
+	<div class="cj"></div>
+	<div class="ks">
+		<span>开始游戏</span>
+	</div>
+	<div class="js">
+		<div class="endnum"><span>最终得分：</span><i id="endnum">100</i></span>
+		</div>
+		<div class="btn"><span id="jx">继续</span><span id="tc">退出</span></div>
+	</div>
+	<!-- <audio src="img/kaishi.mp3" id="ksmusic"></audio>
+	<audio src="img/jieshu.mp3" id="jsmusic"></audio>
+	<audio src="img/jumpp.mp3" id="dfmusic"></audio> -->
+	<script>
+		let cj = document.querySelector(".cj");
+		let ks = document.querySelector(".ks");
+		let ksbtn = document.querySelector(".ks span");
+		let js = document.querySelector(".js");
+		let jx = document.querySelector("#jx");
+		let tc = document.querySelector("#tc");
+		let obj = {};
+		let gk = 1,
+			sm = 5,
+			df = 0;
+		let gkNum = document.querySelector("#gk");
+		let smNum = document.querySelector("#sm");
+		let dfNum = document.querySelector("#df");
+		let n = 5;
+		let time;
+		let flag = 0;
+		let flag1 = 0;
+		let flag2 = 0;
+		let ksmusic = document.querySelector("#ksmusic");
+		let jsmusic = document.querySelector("#jsmusic");
+		let dfmusic = document.querySelector("#dfmusic");
+		let endnum = document.querySelector("#endnum");
+		ksbtn.innerHTML = "开始游戏";
+
+		function checkPos(left) {
+			for (let i in obj) {
+				if (left - obj[i].randomLeft > -80 && left - obj[i].randomLeft < 80) {
+					return true;
+				}
+			}
+		}
+
+		function getColor(n) {
+			let color = ["0", "3", "6", "9", "c", "f"];
+			let str = "#";
+			let index;
+			for (let i = 0; i < 3; i++) {
+				if (n == "bj") {
+					index = Math.floor(Math.random() * 3 + 3);
+				}
+				if (n == "zm") {
+					index = Math.floor(Math.random() * 3);
+				}
+				if (n == "bk") {
+					index = Math.floor(Math.random() * 6);
+				}
+				str = str + color[index];
+			}
+			console.log(str);
+			return str;
+		}
+
+		function zm() {
+			let num, newdiv, randomLeft, randomTop;
+			newdiv = document.createElement("div");
+			do {
+				num = Math.floor(Math.random() * 25) + 65;
+			} while (obj[String.fromCharCode(num)])
+			do {
+				randomLeft = Math.random() * 900;
+				randomTop = -(Math.random() * 50 + 50);
+			} while (checkPos(randomLeft))
+			obj[String.fromCharCode(num)] = {
+				randomLeft,
+				randomTop,
+				ele: newdiv
+			};
+			newdiv.classList.add("zm");
+			newdiv.style.left = randomLeft + "px";
+			newdiv.style.top = randomTop + "px";
+			newdiv.innerHTML = String.fromCharCode(num);
+			newdiv.style.color = getColor("zm");
+			newdiv.style.backgroundColor = getColor("bj");
+			newdiv.style.borderColor = getColor("bk");
+			cj.appendChild(newdiv);
+		}
+
+		function xl() {
+			if (flag == 0) {
+				flag1 = 1;
+				for (let i = 0; i < 3; i++) {
+					zm();
+				}
+			}
+			time = setInterval(function() {
+				let top;
+				for (let i in obj) {
+					top = obj[i].randomTop;
+					top += n;
+					if (top > window.innerHeight) {
+						sm--;
+						cj.removeChild(obj[i].ele);
+						delete obj[i];
+						smNum.innerHTML = sm;
+						zm();
+						if (sm <= 0) {
+							endnum.innerHTML = df;
+							clearInterval(time);
+							setTimeout(function() {
+								js.style.display = "flex"
+							}, 2000);
+							// jsmusic.play();
+						}
+						return;
+					}
+					obj[i].randomTop = top;
+					obj[i].ele.style.top = top + "px";
+				}
+			}, 30);
+		}
+		ksbtn.onclick = function() {
+			ks.style.display = "none";
+			if (flag1 == 0) {
+				// ksmusic.play();
+				setTimeout(xl, 4000);
+			} else {
+				xl();
+				flag1 = 0;
+			}
+		}
+		jx.onclick = function() {
+			flag = 0;
+			sm = 5;
+			gk = 1;
+			df = 0;
+			n = 5;
+			js.style.display = "none";
+			gkNum.innerHTML = 1;
+			smNum.innerHTML = 5;
+			dfNum.innerHTML = 0;
+			for (let i in obj) {
+				console.log(obj);
+				cj.removeChild(obj[i].ele);
+				delete obj[i];
+			}
+			ksmusic.play();
+			setTimeout(xl, 4000);
+		}
+		tc.onclick = function() {
+			window.location.reload(true);
+		}
+		window.onkeydown = function(event) {
+			for (let i in obj) {
+				if (String.fromCharCode(event.keyCode) === i) {
+					dfmusic.play();
+					df++;
+					if (df % 10 == 0) {
+						gk++;
+						gkNum.innerHTML = gk;
+						if (gk <= 3) {
+							zm();
+						} else {
+							n += 3;
+						}
+					}
+					cj.removeChild(obj[i].ele);
+					delete obj[i];
+					dfNum.innerHTML = df;
+					zm();
+				}
+			}
+			if (flag2 == 0) {
+				if (event.keyCode === 32) {
+					flag1 = 1;
+					ksmusic.pause();
+					flag = 1;
+					clearInterval(time);
+					ks.style.display = "flex";
+					ksbtn.innerHTML = "点击继续";
+				}
+			}
+			if (event.keyCode == 27) {
+				window.location.reload(true);
+			}
+		}
+	</script>
+</body>
+
+</html>

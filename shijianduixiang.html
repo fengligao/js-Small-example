@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图片放大镜</title>
+    <link rel="icon" href="./img/b.jpg">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .imgBox {
+        float: left;
+        position: relative;
+        width: 300px;
+        height: 300px;
+        border: 1px solid orangered;
+        position: relative;
+    }
+
+    .imgBox .opacity {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 3333;
+    }
+
+    .imgBox img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .imgBox .mask {
+        display: none;
+        width: 100px;
+        height: 100px;
+        background: rgba(0, 0, 0, .3);
+        position: absolute;
+        z-index: 2222;
+    }
+
+    .imgFbox {
+        display: none;
+        float: left;
+        margin-left: 20px;
+        width: 300px;
+        height: 300px;
+        border: 1px solid orange;
+    }
+</style>
+<body>
+<div class="imgBox">
+    <div class="opacity"></div>
+    <div class="mask"></div>
+    <img src="./img/daxie.jpg" alt="">
+</div>
+<div class="imgFbox">
+
+</div>
+<textarea name="" id="" cols="70" rows="30" disabled>
+
+    ->html代码：
+
+    <div class="imgBox">
+        <div class="opacity"></div>
+        <div class="mask"></div>
+        <img src="./img/daxie.jpg" alt="">
+    </div>
+    <div class="imgFbox">
+
+    </div>
+
+    ->css代码：
+
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .imgBox {
+        float: left;
+        position: relative;
+        width: 300px;
+        height: 300px;
+        border: 1px solid orangered;
+        position: relative;
+    }
+
+    .imgBox .opacity {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 3333;
+    }
+
+    .imgBox img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .imgBox .mask {
+        display: none;
+        width: 100px;
+        height: 100px;
+        background: rgba(0, 0, 0, .3);
+        position: absolute;
+        z-index: 2222;
+    }
+
+    .imgFbox {
+        display: none;
+        float: left;
+        margin-left: 20px;
+        width: 300px;
+        height: 300px;
+        border: 1px solid orange;
+    }
+
+    ->js代码：
+
+    let imgBox = document.querySelector(".imgBox");
+    let opacity = document.querySelector(".opacity");
+    let imgFbox = document.querySelector(".imgFbox");
+    let mask = document.querySelector(".mask");
+    let [cw, ch] = [imgBox.offsetWidth, imgBox.offsetHeight];
+    let [ow, oh] = [mask.offsetWidth, mask.offsetHeight];
+    opacity.onmousedown = function (e) {
+        imgFbox.style.display = "block";
+        mask.style.display = "block";
+        let [ox, oy] = [e.offsetX, e.offsetY];
+        document.onmousemove = function (e) {
+            let [lefts, tops] = [e.clientX - ox, e.clientY - oy];
+            if (tops < 0) {
+                tops = 0;
+            }
+            if (lefts < 0) {
+                lefts = 0;
+            }
+            if (tops > cw) {
+                tops = cw - ow;
+            }
+            if (lefts > ch) {
+                lefts = ch - oh;
+            }
+            mask.style.top = tops + "px";
+            mask.style.left = lefts + "px";
+        };
+        opacity.onmpuseup = function () {
+            opacity.onmousemove = null;
+            opacity.onmouseup = null;
+            imgFbox.style.display = "none";
+            mask.style.display = "none";
+        }
+    }
+</textarea>
+</body>
+</html>
+<script>
+    let imgBox = document.querySelector(".imgBox");
+    let opacity = document.querySelector(".opacity");
+    let imgFbox = document.querySelector(".imgFbox");
+    let mask = document.querySelector(".mask");
+    let [cw, ch] = [imgBox.offsetWidth, imgBox.offsetHeight];
+    let [ow, oh] = [mask.offsetWidth, mask.offsetHeight];
+    opacity.onmousedown = function (e) {
+        imgFbox.style.display = "block";
+        mask.style.display = "block";
+        let [ox, oy] = [e.offsetX, e.offsetY];
+        document.onmousemove = function (e) {
+            let [lefts, tops] = [e.clientX - ox, e.clientY - oy];
+            if (tops < 0) {
+                tops = 0;
+            }
+            if (lefts < 0) {
+                lefts = 0;
+            }
+            if (tops > cw) {
+                tops = cw - ow;
+            }
+            if (lefts > ch) {
+                lefts = ch - oh;
+            }
+            mask.style.top = tops + "px";
+            mask.style.left = lefts + "px";
+        };
+        opacity.onmpuseup = function () {
+            opacity.onmousemove = null;
+            opacity.onmouseup = null;
+            imgFbox.style.display = "none";
+            mask.style.display = "none";
+        }
+    }
+
+</script>

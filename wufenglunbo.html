@@ -57,19 +57,27 @@
     let banner = document.querySelector(".bannerBox");
     let length = document.querySelectorAll(".bannerBox li").length;
     let num = 0;
-    let t = setInterval(function () {
+
+    function movefn() {
         num++;
         if (num === 1) {
             banner.style.transition = "all 1s ease";
         }
         banner.style.marginLeft = -num * 1260 + "px";
-    }, 2000);
+    }
+
+    let t = setInterval(movefn, 2000);
     banner.addEventListener("transitionend", function () {
         if (num === length - 1) {
             banner.style.transition = "none";
             banner.style.marginLeft = 0;
             num = 0;
         }
-    })
-
+    });
+    window.onfocus = function () {
+        t = setInterval(movefn, 2000);
+    };
+    window.onblur = function () {
+        clearInterval(t);
+    }
 </script>
