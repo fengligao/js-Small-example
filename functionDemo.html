@@ -13,9 +13,9 @@
 <section class="box">
     <div class="box_son">
         <ul class="son">
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
+            <li><img src="./img/g3.jpg" alt=""></li>
+            <li><img src="./img/g2.jpg" alt=""></li>
+            <li><img src="./img/g1.jpg" alt=""></li>
         </ul>
         <ul class="btn">
             <li class="active"></li>
@@ -27,9 +27,9 @@
     </div>
     <div class="box_son">
         <ul class="son">
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
+            <li><img src="./img/g1.jpg" alt=""></li>
+            <li><img src="./img/g2.jpg" alt=""></li>
+            <li><img src="./img/g3.jpg" alt=""></li>
         </ul>
         <ul class="btn">
             <li class="active"></li>
@@ -41,10 +41,10 @@
     </div>
     <div class="box_son">
         <ul class="son">
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
+            <li><img src="./img/g4.jpg" alt=""></li>
+            <li><img src="./img/g5.jpg" alt=""></li>
+            <li><img src="./img/g6.jpg" alt=""></li>
+            <li><img src="./img/g1.jpg" alt=""></li>
         </ul>
         <ul class="btn">
             <li class="active"></li>
@@ -57,12 +57,16 @@
     </div>
     <div class="box_son">
         <ul class="son">
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
+            <li><img src="./img/g6.jpg" alt=""></li>
+            <li><img src="./img/g3.jpg" alt=""></li>
+            <li><img src="./img/g1.jpg" alt=""></li>
+            <li><img src="./img/g4.jpg" alt=""></li>
+            <li><img src="./img/g5.jpg" alt=""></li>
         </ul>
         <ul class="btn">
             <li class="active"></li>
+            <li></li>
+            <li></li>
             <li></li>
             <li></li>
         </ul>
@@ -70,6 +74,237 @@
         <div class="jt nr"> ></div>
     </div>
 </section>
+<p class="demo_one">这是示例代码:</p>
+<textarea id="textarea" name="" id="" cols="80" rows="80" disabled>
+
+    -> 这是html代码:
+        <section class="box">
+            <div class="box_son">
+                <ul class="son">
+                    <li><img src="./img/g3.jpg" alt=""></li>
+                    <li><img src="./img/g2.jpg" alt=""></li>
+                    <li><img src="./img/g1.jpg" alt=""></li>
+                </ul>
+                <ul class="btn">
+                    <li class="active"></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+                <div class="jt pl"> <</div>
+                <div class="jt nr"> ></div>
+            </div>
+            <div class="box_son">
+                <ul class="son">
+                    <li><img src="./img/g1.jpg" alt=""></li>
+                    <li><img src="./img/g2.jpg" alt=""></li>
+                    <li><img src="./img/g3.jpg" alt=""></li>
+                </ul>
+                <ul class="btn">
+                    <li class="active"></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+                <div class="jt pl"> <</div>
+                <div class="jt nr"> ></div>
+            </div>
+            <div class="box_son">
+                <ul class="son">
+                    <li><img src="./img/g4.jpg" alt=""></li>
+                    <li><img src="./img/g5.jpg" alt=""></li>
+                    <li><img src="./img/g6.jpg" alt=""></li>
+                    <li><img src="./img/g1.jpg" alt=""></li>
+                </ul>
+                <ul class="btn">
+                    <li class="active"></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+                <div class="jt pl"> <</div>
+                <div class="jt nr"> ></div>
+            </div>
+            <div class="box_son">
+                <ul class="son">
+                    <li><img src="./img/g6.jpg" alt=""></li>
+                    <li><img src="./img/g3.jpg" alt=""></li>
+                    <li><img src="./img/g1.jpg" alt=""></li>
+                    <li><img src="./img/g4.jpg" alt=""></li>
+                    <li><img src="./img/g5.jpg" alt=""></li>
+                </ul>
+                <ul class="btn">
+                    <li class="active"></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+                <div class="jt pl"> <</div>
+                <div class="jt nr"> ></div>
+            </div>
+        </section>
+
+    -> 这是css代码:
+        .box {
+            width: 1202px;
+            height: 500px;
+            border: 1px solid #000;
+            margin: 10px auto;
+            padding-top: 10px;
+        }
+
+        .box_son {
+            width: 300px;
+            height: 480px;
+            border: 1px solid #333;
+            float: left;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .son {
+            width: 1500px;
+            height: 480px;
+            transition: all .8s ease;
+        }
+
+        .son li {
+            width: 300px;
+            height: 480px;
+            background: #eee;
+            float: left;
+            text-align: center;
+            line-height: 480px;
+            font-size: 60px;
+            color: #aaa;
+        }
+
+        .son li .img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .box_son .jt {
+            width: 60px;
+            height: 100px;
+            background: rgba(0, 0, 0, .3);
+            text-align: center;
+            line-height: 100px;
+            font-size: 20px;
+            color: #000;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .jt.pl {
+            left: 0;
+        }
+
+        .jt.nr {
+            right: 0;
+        }
+
+        .box_son .jt:hover {
+            transition: all .5s ease;
+            color: #ffffff;
+            background: #000000;
+        }
+
+        .btn {
+            width: 100%;
+            height: 30px;
+            position: absolute;
+            left: 0;
+            bottom: 30px;
+            z-index: 111;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn li {
+            width: 30px;
+            height: 30px;
+            background: #fff;
+            border-radius: 50%;
+            margin: 0 auto;
+        }
+
+        .btn li:hover {
+            background: orange;
+            transition: all .5s ease;
+        }
+
+        .btn li.active {
+            border: 2px solid orange;
+            background: #ffffff;
+        }
+    ->这是js代码:
+        let lists = document.querySelectorAll(".box_son");
+        lists.forEach(function (ele) {
+            contentFn(ele);
+        });
+
+        function contentFn(context) {
+            let pl = context.querySelector(".pl");
+            let nr = context.querySelector(".nr");
+            let son = context.querySelector(".son");
+            let btns = context.querySelectorAll(".btn li");
+            let sonLi = context.querySelectorAll(".son li");
+            let max = sonLi.length;
+            let m = 0;
+            let flag = true;
+            nr.onclick = function () {
+                if (flag) {
+                    flag = false;
+                    m++;
+                    if (m >= max) {
+                        m = max - 1;
+                        return;
+                    }
+                    for (let i = 0; i < btns.length; i++) {
+                        btns[i].classList.remove("active");
+                    }
+                    btns[m].classList.add("active");
+                    son.style.marginLeft = -m * 300 + "px";
+                }
+            };
+            pl.onclick = function () {
+                if (flag) {
+                    flag = false;
+                    m--;
+                    if (m < 0) {
+                        m = 0;
+                        return;
+                    }
+                    for (let i = 0; i < btns.length; i++) {
+                        btns[i].classList.remove("active");
+                    }
+                    btns[m].classList.add("active");
+                    son.style.marginLeft = -m * 300 + "px";
+                }
+            };
+            btns.forEach(function (val, ind) {
+                val.onclick = function () {
+                    for (let i = 0; i < btns.length; i++) {
+                        btns[i].classList.remove("active");
+                    }
+                    btns[ind].classList.add("active");
+                    son.style.marginLeft = -ind * 300 + "px";
+                    m = ind;
+                }
+            });
+            son.addEventListener("transitionend", function () {
+                flag = true;
+            })
+        }
+</textarea>
+<br>
+<br>
+<br>
 </body>
 </html>
 <script>
@@ -86,29 +321,36 @@
         let sonLi = context.querySelectorAll(".son li");
         let max = sonLi.length;
         let m = 0;
+        let flag = true;
         nr.onclick = function () {
-            m++;
-            if (m >= max) {
-                m = max - 1;
-                return;
+            if (flag) {
+                flag = false;
+                m++;
+                if (m >= max) {
+                    m = max - 1;
+                    return;
+                }
+                for (let i = 0; i < btns.length; i++) {
+                    btns[i].classList.remove("active");
+                }
+                btns[m].classList.add("active");
+                son.style.marginLeft = -m * 300 + "px";
             }
-            for (let i = 0; i < btns.length; i++) {
-                btns[i].classList.remove("active");
-            }
-            btns[m].classList.add("active");
-            son.style.marginLeft = -m * 300 + "px";
         };
         pl.onclick = function () {
-            m--;
-            if (m < 0) {
-                m = 0;
-                return;
+            if (flag) {
+                flag = false;
+                m--;
+                if (m < 0) {
+                    m = 0;
+                    return;
+                }
+                for (let i = 0; i < btns.length; i++) {
+                    btns[i].classList.remove("active");
+                }
+                btns[m].classList.add("active");
+                son.style.marginLeft = -m * 300 + "px";
             }
-            for (let i = 0; i < btns.length; i++) {
-                btns[i].classList.remove("active");
-            }
-            btns[m].classList.add("active");
-            son.style.marginLeft = -m * 300 + "px";
         };
         btns.forEach(function (val, ind) {
             val.onclick = function () {
@@ -120,6 +362,8 @@
                 m = ind;
             }
         });
+        son.addEventListener("transitionend", function () {
+            flag = true;
+        })
     }
-
 </script>

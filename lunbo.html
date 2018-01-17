@@ -165,19 +165,22 @@
         let imgs = document.querySelectorAll(".img-container li");
         let pages = document.querySelectorAll(".page-container li");
         let bannerContainer = document.querySelector(".banner-container");
+        //遍历轮播点 给每个轮播点添加点击事件
         pages.forEach(function (value, index) {
             value.onclick = function () {
+                //移除所有的类
                 for (let i = 0; i < pages.length; i++) {
                     pages[i].classList.remove("active");
                     imgs[i].classList.remove("active");
                 }
+                //给当前点击的添加类
                 this.classList.add("active");
                 imgs[index].classList.add("active");
                 n = index;
             }
         });
         let n = 0;
-
+        //封装的轮播图函数
         function bannerFn(dir = "right") {
             if (dir === "right") {
                 n++;
@@ -199,24 +202,29 @@
             pages[n].classList.add("active");
             imgs[n].classList.add("active");
         }
-
+        //设置时间函数
         let t = setInterval(bannerFn, 3000);
+        //当鼠标移入的时候清除时间函数
         bannerContainer.onmouseover = function () {
             clearInterval(t);
         };
+        //当鼠标移出的时候再次添加时间函数
         bannerContainer.onmouseout = function () {
             t = setInterval(bannerFn, 3000);
         };
 
         let prev = document.querySelector(".prev");
         let next = document.querySelector(".next");
-        let flag = true;
+        let flag = true; //设置一个开关
+        //右箭头点击事件
         next.onclick = function () {
+            //判断开关true 在调用一次bannerFn函数
             if (flag) {
-                flag = false;
+                flag = false; 当transition未结束时flag设置为false，再次点击没效果
                 bannerFn();
             }
         };
+        //左箭头点击事件
         prev.onclick = function () {
             if (flag) {
                 flag = false;
@@ -224,16 +232,13 @@
             }
         };
         imgs.forEach(function (value) {
+            //给imgs添加事件监听，监听transition结束后吧flag再次设置为true
             value.addEventListener("transitionend", function () {
                 flag = true;
             });
         });
 
 </textarea>
-<br>
-<br>
-<br>
-<br>
 <br>
 <br>
 </body>

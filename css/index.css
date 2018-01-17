@@ -1,6 +1,5 @@
 @import "base.css";
 
-
 .demo_one {
     width: 1226px;
     height: 30px;
@@ -8,6 +7,11 @@
     color: #000;
     font-size: 24px;
     font-weight: bold;
+}
+
+#textarea {
+    display: block;
+    margin: 30px 0 0 150px;
 }
 
 .banner-container {
@@ -34,9 +38,11 @@
 
 .img-container li a {
     display: block;
+    width: 100%;
+    height: 100%;
 }
 
-.img-container img {
+.img-container li a img {
     display: block;
     width: 100%;
     height: 100%;
@@ -123,7 +129,7 @@
 }
 
 .son {
-    width: 1200px;
+    width: 1500px;
     height: 480px;
     transition: all .8s ease;
 }
@@ -139,6 +145,12 @@
     color: #aaa;
 }
 
+.son li .img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
 .box_son .jt {
     width: 60px;
     height: 100px;
@@ -152,6 +164,7 @@
     bottom: 0;
     margin: auto;
     cursor: pointer;
+    user-select: none;
 }
 
 .jt.pl {
@@ -160,6 +173,12 @@
 
 .jt.nr {
     right: 0;
+}
+
+.box_son .jt:hover {
+    transition: all .5s ease;
+    color: #ffffff;
+    background: #000000;
 }
 
 .btn {
