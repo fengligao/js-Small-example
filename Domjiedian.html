@@ -7,13 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="icon" href="./img/b.jpg">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <style>
-    *{
-        margin:0;
-        padding:0;
+    * {
+        margin: 0;
+        padding: 0;
         list-style: none;
     }
+
     .startBtn {
         width: 80px;
         height: 40px;
@@ -54,50 +56,87 @@
         left: 0;
         transition: all .5s ease;
     }
-    .text{
-        width: 100%;
-        height: 4000px;
-        background: #cccccc;
-        margin: 0 auto;
-    }
 </style>
 <body>
-<div class="text">
 
-</div>
-</body>
-</html>
-<script>
-    let startBtn = document.createElement("div");
-    let cw = window.innerWidth, ch = window.innerHeight;
-    document.body.appendChild(startBtn);
-    startBtn.className = "startBtn";
-    startBtn.innerHTML = "START";
-    startBtn.onclick = function () {
-        document.body.removeChild(this);
+<p class="demo_one">这是示例代码:</p>
+<textarea id="textarea" name="" id="" cols="80" rows="30" disabled>
+
+    这是css代码:
+
+    .startBtn {
+        width: 80px;
+        height: 40px;
+        background: orangered;
+        border-radius: 15px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        text-align: center;
+        line-height: 40px;
+        font-size: 16px;
+        color: #ffffff;
+        cursor: pointer;
+    }
+
+    .animaBox {
+        width: 80px;
+        height: 80px;
+        /*border: 1px solid #000000;*/
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+    }
+
+    .ball {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: #000000;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: all .5s ease;
+    }
+
+    这是js代码:
+
+    let startBtn = document.createElement("div"); //创建一个元素
+    let cw = window.innerWidth, ch = window.innerHeight; //获取到浏览器的宽高
+    document.body.appendChild(startBtn); //把创建的元素插入到页面
+    startBtn.className = "startBtn"; //添加一个css类名
+    startBtn.innerHTML = "START"; //内容
+    startBtn.onclick = function () { //添加一个点击事件
+        document.body.removeChild(this); //事件触发后首先把元素从页面移除
         let animaBox = document.createElement("div");
         animaBox.className = "animaBox";
         document.body.appendChild(animaBox);
-        for (let i = 0; i < 40; i++) {
+        for (let i = 0; i < 40; i++) {  //循环创建40个元素
             let ball = document.createElement("div");
-            let lefts, tops;
+            let lefts, tops;  //声明变量
             ball.className = "ball";
-            do {
+            do { //判断位置是否重复
                 lefts = Math.random() * (cw - 80) - (cw - 80) / 2; //随机位置
                 tops = Math.random() * (ch - 80) - (ch - 80) / 2; //随机位置
             } while (checkPos(PosArr, {l: lefts, t: tops}));
             PosArr.push({lefts, tops});
-            ball.style.background = getColor();
+            ball.style.background = getColor(); //随机颜色赋值给当前创建出来的元素
             setTimeout(function () {
                 ball.style.left = lefts + "px";
                 ball.style.top = tops + "px";
-            }, 100);
+            }, 100); //设置时间函数 延迟100毫秒
             animaBox.appendChild(ball);
         }
     };
-    //////随机颜色的产生
     let colorArr = [6, 9, 1, 3, 5, "c"];
 
+    //////随机颜色的产生
     function getColor() {
         let color = "#";
         for (let i = 0; i < 3; i++) {
@@ -107,15 +146,69 @@
         return color;
     }
 
-    //////随机位置不重复的方法
     let PosArr = [];
 
+    //////随机位置不重复的方法
     function checkPos(arr, obj) {
         let lt = arr.some(function (value) {
             if (obj.l > value.lefts - 100 && obj.l < value.lefts + 100 && obj.t > value.tops - 100 && obj.t < value.tops + 100) {
                 return true;
             }
-        })
+        });
+        return lt;
+    }
+</textarea>
+</body>
+</html>
+<script>
+    let startBtn = document.createElement("div"); //创建一个元素
+    let cw = window.innerWidth, ch = window.innerHeight; //获取到浏览器的宽高
+    document.body.appendChild(startBtn); //把创建的元素插入到页面
+    startBtn.className = "startBtn"; //添加一个css类名
+    startBtn.innerHTML = "START"; //内容
+    startBtn.onclick = function () { //添加一个点击事件
+        document.body.removeChild(this); //事件触发后首先把元素从页面移除
+        let animaBox = document.createElement("div");
+        animaBox.className = "animaBox";
+        document.body.appendChild(animaBox);
+        for (let i = 0; i < 40; i++) {  //循环创建40个元素
+            let ball = document.createElement("div");
+            let lefts, tops;  //声明变量
+            ball.className = "ball";
+            do { //判断位置是否重复
+                lefts = Math.random() * (cw - 80) - (cw - 80) / 2; //随机位置
+                tops = Math.random() * (ch - 80) - (ch - 80) / 2; //随机位置
+            } while (checkPos(PosArr, {l: lefts, t: tops}));
+            PosArr.push({lefts, tops});
+            ball.style.background = getColor(); //随机颜色赋值给当前创建出来的元素
+            setTimeout(function () {
+                ball.style.left = lefts + "px";
+                ball.style.top = tops + "px";
+            }, 100); //设置时间函数 延迟100毫秒
+            animaBox.appendChild(ball);
+        }
+    };
+    let colorArr = [6, 9, 1, 3, 5, "c"];
+
+    //////随机颜色的产生
+    function getColor() {
+        let color = "#";
+        for (let i = 0; i < 3; i++) {
+            let num = Math.floor(Math.random() * colorArr.length);
+            color += colorArr[num];
+        }
+        return color;
+    }
+
+    let PosArr = [];
+
+    //////随机位置不重复的方法
+    function checkPos(arr, obj) {
+        let lt = arr.some(function (value) {
+            if (obj.l > value.lefts - 100 && obj.l < value.lefts + 100 && obj.t > value.tops - 100 && obj.t < value.tops + 100) {
+                return true;
+            }
+        });
         return lt;
     }
 </script>
