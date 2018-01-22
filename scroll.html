@@ -31,7 +31,7 @@
         margin: 0 auto;
     }
 
-    #totop {
+    #toTops {
         width: 40px;
         padding: 3px 1px;
         background: red;
@@ -115,7 +115,7 @@
 <div class="topbar">
     <input type="text" class="topbar_son" placeholder="嗖嗖嗖">
 </div>
-<div id="totop">
+<div id="toTops">
     返回顶部
 </div>
 <div class="banner">
@@ -146,20 +146,159 @@
 <div class="footer">
     Footer
 </div>
-</body>
-</html>
-<script>
+<p class="demo_one">这是示例代码:</p>
+<textarea id="textarea" name="" id="" cols="80" rows="80" disabled>
+    这是html代码:
+    <!--topbar-->
+    <div class="topbar">
+        <input type="text" class="topbar_son" placeholder="嗖嗖嗖">
+    </div>
+    <div id="toTops">
+        返回顶部
+    </div>
+    <div class="banner">
+        Banner
+    </div>
+    <div class="floor">
+        one floor
+    </div>
+    <div class="floor">
+        two floor
+    </div>
+    <div class="floor">
+        three floor
+    </div>
+    <div class="floor">
+        four floor
+    </div>
+    <div class="floor">
+        five floor
+    </div>
+    <ul class="leftbar">
+        <li class="active">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <div class="footer">
+        Footer
+    </div>
+
+    这是css代码:
+    .topbar {
+        width: 100%;
+        height: 80px;
+        background: rgba(255, 236, 17, 0.9);
+        position: fixed;
+        top: -80px;
+        left: 0;
+        z-index: 99999;
+        /*display: none;*/
+        transition: all .8s ease;
+    }
+
+    .topbar_son {
+        outline: none;
+        display: block;
+        padding: 0 50px;
+        width: 500px;
+        height: 100%;
+        margin: 0 auto;
+    }
+
+    #toTops {
+        width: 40px;
+        padding: 3px 1px;
+        background: red;
+        position: fixed;
+        bottom: 50px;
+        right: 50px;
+        z-index: 999999;
+        color: #ffffff;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .banner {
+        width: 1226px;
+        height: 500px;
+        border: 1px solid #000000;
+        margin: 0 auto;
+        margin-top: 100px;
+        text-align: center;
+        line-height: 500px;
+        color: #000;
+        font-size: 50px;
+        font-weight: bold;
+    }
+
+    .floor {
+        width: 1100px;
+        height: 500px;
+        border: 1px solid #000000;
+        margin: 10px auto;
+        text-align: center;
+        line-height: 500px;
+        color: #000;
+        font-size: 50px;
+        font-weight: bold;
+    }
+
+    .leftbar {
+        width: 50px;
+        height: 250px;
+        background: #ffffff;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        left: 50%;
+        margin-left: -610px;
+        opacity: 0;
+        transition: all .8s ease;
+    }
+
+    .leftbar li {
+        width: 50px;
+        height: 50px;
+        box-sizing: border-box;
+        border: 1px solid #cccccc;
+        text-align: center;
+        line-height: 50px;
+        cursor: pointer;
+    }
+
+    .leftbar li.active {
+        background: yellow;
+        /*transition: all .8s ease;*/
+    }
+
+    .footer {
+        width: 1226px;
+        height: 500px;
+        border: 1px solid #000000;
+        margin: 30px auto;
+        text-align: center;
+        line-height: 500px;
+        color: #000;
+        font-size: 50px;
+        font-weight: bold;
+    }
+
+    这是js代码:
+
     //topbar 效果   顶部搜索效果
     let topBar = document.querySelector(".topbar");
     let leftBar = document.querySelector(".leftbar");
     window.onscroll = function () {
-        let topBarTop = document.documentElement.scrollTop;
+        let topBarTop = document.documentElement.scrollTop; //获取当前鼠标滚动的距离
         if (topBarTop > 550) {
-            //topBar.style.display = "block"; //display 方法显示
-            topBar.style.top = 0 + "px";
+            //topBar.style.display = "block"; //display方法
+            topBar.style.top = 0 + "px"; //位移的方法
         } else {
-            //topBar.style.display = "none"; //display 放啊隐藏
-            topBar.style.top = -80 + "px";
+            //topBar.style.display = "none"; //display方法
+            topBar.style.top = -80 + "px"; //位移方法
         }
         if (topBarTop > 500) {
             leftBar.style.opacity = 1;
@@ -167,7 +306,7 @@
             leftBar.style.opacity = 0;
         }
         if (flag) {
-
+            //遍历楼层
             floors.forEach(function (ele, ind) {
                 if (topBarTop >= ele.offsetTop) {
                     for (let i = 0; i < btns.length; i++) {
@@ -180,7 +319,7 @@
     };
     /////////////////////
     //totop  返回顶部效果
-    let toTop = document.querySelector("#totop");
+    let toTop = document.querySelector("#toTops");
     toTop.onclick = function () {
         let st = document.documentElement.scrollTop;
         let speed = 30 * st / 500;
@@ -197,12 +336,88 @@
     //楼层跳转
     let btns = document.querySelectorAll(".leftbar li");
     let floors = document.querySelectorAll(".floor");
-    let flag = true;
+    let flag = true; //设置开关
     btns.forEach(function (ele, index) {
         ele.onclick = function () {
             let target = floors[index].offsetTop;
             let now = document.documentElement.scrollTop;
-            let speed = (target - now) * 30 / 300;
+            let speed = (target - now) * 30 / 300; //计算出滚动速度
+            let time = 0;
+            let t = setInterval(function () {
+                now += speed;
+                time += 30;
+                if (time === 300) {
+                    clearInterval(t);
+                    now = target;
+                    flag = true;
+                }
+                document.documentElement.scrollTop = now;
+            }, 30);
+        }
+    });
+</textarea>
+<br>
+<br>
+<br>
+<br>
+<br>
+</body>
+</html>
+<script>
+    //topbar 效果   顶部搜索效果
+    let topBar = document.querySelector(".topbar");
+    let leftBar = document.querySelector(".leftbar");
+    window.onscroll = function () {
+        let topBarTop = document.documentElement.scrollTop; //获取当前鼠标滚动的距离
+        if (topBarTop > 550) {
+            //topBar.style.display = "block"; //display方法
+            topBar.style.top = 0 + "px"; //位移的方法
+        } else {
+            //topBar.style.display = "none"; //display方法
+            topBar.style.top = -80 + "px"; //位移方法
+        }
+        if (topBarTop > 500) {
+            leftBar.style.opacity = 1;
+        } else {
+            leftBar.style.opacity = 0;
+        }
+        if (flag) {
+            //遍历楼层
+            floors.forEach(function (ele, ind) {
+                if (topBarTop >= ele.offsetTop) {
+                    for (let i = 0; i < btns.length; i++) {
+                        btns[i].classList.remove("active");
+                    }
+                    btns[ind].classList.add("active");
+                }
+            });
+        }
+    };
+    /////////////////////
+    //totop  返回顶部效果
+    let toTop = document.querySelector("#toTops");
+    toTop.onclick = function () {
+        let st = document.documentElement.scrollTop;
+        let speed = 30 * st / 500;
+        let returnTop = setInterval(function () {
+            st -= speed;
+            if (st <= 0) {
+                st = 0;
+                clearInterval(returnTop);
+            }
+            document.documentElement.scrollTop = st;
+        }, 30);
+    }
+    ////////////////////
+    //楼层跳转
+    let btns = document.querySelectorAll(".leftbar li");
+    let floors = document.querySelectorAll(".floor");
+    let flag = true; //设置开关
+    btns.forEach(function (ele, index) {
+        ele.onclick = function () {
+            let target = floors[index].offsetTop;
+            let now = document.documentElement.scrollTop;
+            let speed = (target - now) * 30 / 300; //计算出滚动速度
             let time = 0;
             let t = setInterval(function () {
                 now += speed;

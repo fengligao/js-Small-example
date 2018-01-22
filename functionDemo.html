@@ -243,88 +243,26 @@
             background: #ffffff;
         }
     ->这是js代码:
-        let lists = document.querySelectorAll(".box_son");
-        lists.forEach(function (ele) {
-            contentFn(ele);
-        });
-
-        function contentFn(context) {
-            let pl = context.querySelector(".pl");
-            let nr = context.querySelector(".nr");
-            let son = context.querySelector(".son");
-            let btns = context.querySelectorAll(".btn li");
-            let sonLi = context.querySelectorAll(".son li");
-            let max = sonLi.length;
-            let m = 0;
-            let flag = true;
-            nr.onclick = function () {
-                if (flag) {
-                    flag = false;
-                    m++;
-                    if (m >= max) {
-                        m = max - 1;
-                        return;
-                    }
-                    for (let i = 0; i < btns.length; i++) {
-                        btns[i].classList.remove("active");
-                    }
-                    btns[m].classList.add("active");
-                    son.style.marginLeft = -m * 300 + "px";
-                }
-            };
-            pl.onclick = function () {
-                if (flag) {
-                    flag = false;
-                    m--;
-                    if (m < 0) {
-                        m = 0;
-                        return;
-                    }
-                    for (let i = 0; i < btns.length; i++) {
-                        btns[i].classList.remove("active");
-                    }
-                    btns[m].classList.add("active");
-                    son.style.marginLeft = -m * 300 + "px";
-                }
-            };
-            btns.forEach(function (val, ind) {
-                val.onclick = function () {
-                    for (let i = 0; i < btns.length; i++) {
-                        btns[i].classList.remove("active");
-                    }
-                    btns[ind].classList.add("active");
-                    son.style.marginLeft = -ind * 300 + "px";
-                    m = ind;
-                }
-            });
-            son.addEventListener("transitionend", function () {
-                flag = true;
-            })
-        }
-</textarea>
-<br>
-<br>
-<br>
-</body>
-</html>
-<script>
+    //获取到所有的轮播图盒子
     let lists = document.querySelectorAll(".box_son");
+    //遍历轮播图盒子 传递一个参数
     lists.forEach(function (ele) {
         contentFn(ele);
     });
-
+    //轮播图函数
     function contentFn(context) {
+        //接收到的参数作为document使用  就是获取到的全部都是当前元素下的子元素
         let pl = context.querySelector(".pl");
         let nr = context.querySelector(".nr");
         let son = context.querySelector(".son");
         let btns = context.querySelectorAll(".btn li");
         let sonLi = context.querySelectorAll(".son li");
-        let max = sonLi.length;
-        let m = 0;
-        let flag = true;
-        nr.onclick = function () {
-            if (flag) {
-                flag = false;
+        let max = sonLi.length;  //获取到当前轮播图的长度
+        let m = 0; //设置初始值
+        let flag = true; // 设置开关
+        nr.onclick = function () {  //点击下一张
+            if (flag) { //判断如果flag为true
+                flag = false; //将flag设置为 false
                 m++;
                 if (m >= max) {
                     m = max - 1;
@@ -337,7 +275,9 @@
                 son.style.marginLeft = -m * 300 + "px";
             }
         };
+        //点击上一张
         pl.onclick = function () {
+            //开关同上
             if (flag) {
                 flag = false;
                 m--;
@@ -352,6 +292,7 @@
                 son.style.marginLeft = -m * 300 + "px";
             }
         };
+        //遍历轮播点 给轮播点添加效果
         btns.forEach(function (val, ind) {
             val.onclick = function () {
                 for (let i = 0; i < btns.length; i++) {
@@ -362,6 +303,79 @@
                 m = ind;
             }
         });
+        //给平移的元素添加事件监听  当事件结束的时候把 开关再次设置为true 这样是为了避免重复点击不停的触发 会过快的移动
+        son.addEventListener("transitionend", function () {
+            flag = true;
+        })
+    }
+</textarea>
+<br>
+<br>
+<br>
+</body>
+</html>
+<script>
+    //获取到所有的轮播图盒子
+    let lists = document.querySelectorAll(".box_son");
+    //遍历轮播图盒子 传递一个参数
+    lists.forEach(function (ele) {
+        contentFn(ele);
+    });
+    //轮播图函数
+    function contentFn(context) {
+        //接收到的参数作为document使用  就是获取到的全部都是当前元素下的子元素
+        let pl = context.querySelector(".pl");
+        let nr = context.querySelector(".nr");
+        let son = context.querySelector(".son");
+        let btns = context.querySelectorAll(".btn li");
+        let sonLi = context.querySelectorAll(".son li");
+        let max = sonLi.length;  //获取到当前轮播图的长度
+        let m = 0; //设置初始值
+        let flag = true; // 设置开关
+        nr.onclick = function () {  //点击下一张
+            if (flag) { //判断如果flag为true
+                flag = false; //将flag设置为 false
+                m++;
+                if (m >= max) {
+                    m = max - 1;
+                    return;
+                }
+                for (let i = 0; i < btns.length; i++) {
+                    btns[i].classList.remove("active");
+                }
+                btns[m].classList.add("active");
+                son.style.marginLeft = -m * 300 + "px";
+            }
+        };
+        //点击上一张
+        pl.onclick = function () {
+            //开关同上
+            if (flag) {
+                flag = false;
+                m--;
+                if (m < 0) {
+                    m = 0;
+                    return;
+                }
+                for (let i = 0; i < btns.length; i++) {
+                    btns[i].classList.remove("active");
+                }
+                btns[m].classList.add("active");
+                son.style.marginLeft = -m * 300 + "px";
+            }
+        };
+        //遍历轮播点 给轮播点添加效果
+        btns.forEach(function (val, ind) {
+            val.onclick = function () {
+                for (let i = 0; i < btns.length; i++) {
+                    btns[i].classList.remove("active");
+                }
+                btns[ind].classList.add("active");
+                son.style.marginLeft = -ind * 300 + "px";
+                m = ind;
+            }
+        });
+        //给平移的元素添加事件监听  当事件结束的时候把 开关再次设置为true 这样是为了避免重复点击不停的触发 会过快的移动
         son.addEventListener("transitionend", function () {
             flag = true;
         })

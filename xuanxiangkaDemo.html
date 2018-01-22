@@ -72,6 +72,169 @@
         </div>
     </div>
 </section>
+<p class="demo_one">这是示例代码:</p>
+<textarea id="textarea" name="" id="" cols="80" rows="80" disabled>
+
+    封装后的选项卡效果
+
+    这是html代码:
+
+    <section class="table">
+        <div class="table_box">
+            <div class="title">
+                <ul class="title_box">
+                    <li class="hot">1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                </ul>
+            </div>
+            <div class="content">
+                <ul class="content_box">
+                    <li class="active">A</li>
+                    <li>B</li>
+                    <li>C</li>
+                    <li>D</li>
+                    <li>E</li>
+                </ul>
+            </div>
+        </div>
+        <div class="table_box">
+            <div class="title">
+                <ul class="title_box">
+                    <li class="hot">1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                </ul>
+            </div>
+            <div class="content">
+                <ul class="content_box">
+                    <li class="active">A</li>
+                    <li>B</li>
+                    <li>C</li>
+                    <li>D</li>
+                    <li>E</li>
+                </ul>
+            </div>
+        </div>
+        <div class="table_box">
+            <div class="title">
+                <ul class="title_box">
+                    <li class="hot">1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                </ul>
+            </div>
+            <div class="content">
+                <ul class="content_box">
+                    <li class="active">A</li>
+                    <li>B</li>
+                    <li>C</li>
+                    <li>D</li>
+                    <li>E</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    这是css代码:
+
+    .table {
+        width: 100%;
+    }
+
+    .table_box {
+        width: 1202px;
+        height: 500px;
+        margin: 10px auto;
+    }
+
+    .title {
+        width: 100%;
+        height: 100px;
+        background: #cccccc;
+    }
+
+    .title_box {
+        float: right;
+        height: 100%;
+    }
+
+    .title_box li {
+        width: 100px;
+        height: 100px;
+        background: #cccccc;
+        float: left;
+        line-height: 100px;
+        text-align: center;
+        border: 1px solid #333333;
+    }
+
+    .title_box li.hot {
+        background: orchid;
+        color: orangered;
+        border: 1px solid orange;
+        transition: all .8s ease;
+    }
+
+    .content {
+        width: 100%;
+        height: 400px;
+    }
+
+    .content_box {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    .content_box li {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        line-height: 500px;
+        position: absolute;
+        background: #808080;
+    }
+
+    .content_box li.active {
+        background: orchid;
+        z-index: 9999;
+        transition: all .8s ease;
+    }
+
+    这是js代码:
+    //获取到所有选项卡的盒子
+    let tabBox = document.querySelectorAll(".table_box");
+    //遍历盒子
+    tabBox.forEach(function (value) {
+        tabFn(value);
+    });
+    //封装好的函数  接收的参数是每个盒子
+    function tabFn(context) {
+        //每个盒子下的表头，和内容 这里不是以document的基准来获取  而是一每个自身的盒子来获取
+        let tab = context.querySelectorAll(".title_box li");
+        let text = context.querySelectorAll(".content_box li");
+        //遍历表头
+        tab.forEach(function (value, index) {
+            //移入的时候把所有的显示类都清除
+            value.onmouseover = function () {
+                for (let i = 0; i < text.length; i++) {
+                    tab[i].classList.remove("hot");
+                    text[i].classList.remove("active");
+                }
+                //给移入当前的这个添加显示类
+                this.classList.add("hot");
+                text[index].classList.add("active");
+            }
+        });
+    }
+</textarea>
 <br>
 <br>
 <br>
@@ -80,24 +243,29 @@
 </body>
 </html>
 <script>
+    //获取到所有选项卡的盒子
     let tabBox = document.querySelectorAll(".table_box");
+    //遍历盒子
     tabBox.forEach(function (value) {
         tabFn(value);
     });
-
+    //封装好的函数  接收的参数是每个盒子
     function tabFn(context) {
+        //每个盒子下的表头，和内容 这里不是以document的基准来获取  而是一每个自身的盒子来获取
         let tab = context.querySelectorAll(".title_box li");
         let text = context.querySelectorAll(".content_box li");
+        //遍历表头
         tab.forEach(function (value, index) {
+            //移入的时候把所有的显示类都清除
             value.onmouseover = function () {
                 for (let i = 0; i < text.length; i++) {
                     tab[i].classList.remove("hot");
                     text[i].classList.remove("active");
                 }
+                //给移入当前的这个添加显示类
                 this.classList.add("hot");
                 text[index].classList.add("active");
             }
         });
     }
-
 </script>
