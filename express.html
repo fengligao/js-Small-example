@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="icon" href="./img/b.jpg">
+    <style>
+        h1 {
+            width: 600px;
+            margin: 50px auto;
+        }
+
+        textarea {
+            display: block;
+            margin: 0 auto;
+            resize: none;
+        }
+    </style>
+</head>
+<body>
+<h1>
+    实例代码：
+</h1>
+<textarea name="" id="" cols="100" rows="100" disabled>
+
+
+    app.js
+        var express = require("express"); //引入 express
+        var app = express(); //
+        var fs = require("fs");
+        app.set("views", "./views");
+        app.set("view engine", "ejs");
+        app.use('/public', express.static('public')); //访问public下面的静态文件
+
+        app.get("/", function (req, res) {
+            fs.readFile("./data.json", function (err, result) {
+                res.setHeader("content-type", "text/html;charset=utf-8");
+                res.render("index.ejs", {result: JSON.parse(result)});
+            });
+        });
+
+
+        app.get("/add", function (req, res) {
+            res.render("add.ejs");
+        });
+
+        var objArr = [];
+        app.get("/addCon", function (req, res) {
+            var username = req.query.username;
+            var sex = req.query.sex;
+            var age = req.query.age;
+
+            var obj = {username: username, sex: sex, age: age};
+            objArr.push(obj);
+
+            fs.writeFile("data.json", JSON.stringify(objArr));
+            res.redirect("/");
+        });
+
+        var server = app.listen(3000, function () {
+            var host = server.address().address;
+            var port = server.address().port;
+        });
+        // 下载package 下载ejs  入口文件得和package里一样
+
+
+    index.ejs  //views 下的
+
+        <table class="table table-bordered">
+            <tr>
+                <td>
+                    姓名：
+                </td>
+                <td>
+                    性别：
+                </td>
+                <td>
+                    年龄：
+                </td>
+            </tr>
+            <% for(var i = 0;i < result.length;i++){ %>
+                <tr>
+                    <td>
+                        <%= result[i].username %>
+                    </td>
+                    <td>
+                        <%= result[i].sex %>
+                    </td>
+                    <td>
+                        <%= result[i].age %>
+                    </td>
+                </tr>
+            <% } %>
+        </table>
+
+
+    add.ejs  //views 下的
+
+        <form action="addCon">
+            <div class="form-group">
+                <label for="username">姓名</label>
+                <input type="text" name="username" class="form-control" id="username" placeholder="">
+            </div>
+            <div class="form-group">
+                <label for="sex">性别</label>
+                <input type="text" name="sex" class="form-control" id="sex" placeholder="">
+            </div>
+            <div class="form-group">
+                <label for="age">年龄</label>
+                <input type="text" name="age" class="form-control" id="age" placeholder="">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+</textarea>
+</body>
+</html>

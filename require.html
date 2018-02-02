@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="icon" href="./img/b.jpg">
+    <style>
+        h1 {
+            width: 600px;
+            margin: 50px auto;
+        }
+
+        textarea {
+            display: block;
+            margin: 0 auto;
+            resize: none;
+        }
+    </style>
+</head>
+<body>
+<h1>
+    实例代码：
+</h1>
+<textarea name="" id="" cols="100" rows="100" disabled>
+    // 引入require.js文件   data-main不是script的标准属性    main.js是入口文件
+    //<script data-main="scripts/main.js" src="scripts/require.js"></script>
+
+    1.如果带有路径就会按照指定的路径去查找指定的文件。
+    2.如果不带有路径首先查找的是核心模块
+    3.如果说不带有路径并且核心模块也没有的话，那么就会到当前目录的node-modules里面去查找相应的模块
+    4.如果说没有指定后缀名，默认会找后缀名是.js的文件，如果没有后缀名是.js的文件，那么会去找后缀名是.json的文件 如果说.json的文件也没有那么会找后缀名是.node的文件
+
+    //json 文件内必须是json语法
+    //node 里面必须是c语言语法 (node和c语言可以完美融合)
+</textarea>
+</body>
+</html>
