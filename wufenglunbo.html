@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="icon" href="./img/b.jpg">
+    <link rel="stylesheet" href="./css/index.css">
 </head>
 <style>
     * {
@@ -51,13 +52,91 @@
         <li><img src="./img/1.jpg" alt=""></li>
     </ul>
 </div>
+<p class="demo_one">这是示例代码:</p>
+<textarea id="textarea" name="" id="" cols="80" rows="80" disabled>
+    html代码:
+    <div class="banner">
+        <ul class="bannerBox">
+            <li><img src="./img/1.jpg" alt=""></li>
+            <li><img src="./img/2.jpg" alt=""></li>
+            <li><img src="./img/3.jpg" alt=""></li>
+            <li><img src="./img/4.jpg" alt=""></li>
+            <li><img src="./img/5.jpg" alt=""></li>
+            <li><img src="./img/1.jpg" alt=""></li>
+        </ul>
+    </div>
+
+    css代码:
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .banner {
+            width: 1260px;
+            height: 460px;
+            margin: 50px auto;
+            border: 1px solid #ff341d;
+            overflow: hidden;
+        }
+
+        .bannerBox {
+            width: 7560px;
+            height: 460px;
+            transition: all 1s ease;
+        }
+
+        .bannerBox li {
+            width: 1260px;
+            height: 460px;
+            float: left;
+        }
+
+        .bannerBox li img {
+            width: 100%;
+            height: 100%;
+        }
+
+    js代码:
+
+        let banner = document.querySelector(".bannerBox");
+        let length = document.querySelectorAll(".bannerBox li").length;
+        let num = 0; //设置一个初始值
+        //动画的函数
+        function movefn() {
+            num++;
+            if (num === 1) {
+                banner.style.transition = "all 1s ease";
+            }
+            banner.style.marginLeft = -num * 1260 + "px";
+        }
+
+        let t = setInterval(movefn, 2000);
+        //给每个动画添加事件监听
+        banner.addEventListener("transitionend", function () {
+            //判断当运行到最后一张的时候消除动画 让图片瞬间回到第一张
+            if (num === length - 1) {
+                banner.style.transition = "none";
+                banner.style.marginLeft = 0;
+                num = 0;
+            }
+        });
+        //失去焦点和获取到焦点的动画监听
+        window.onfocus = function () {
+            t = setInterval(movefn, 2000);
+        };
+        window.onblur = function () {
+            clearInterval(t);
+        }
+</textarea>
 </body>
 </html>
 <script>
     let banner = document.querySelector(".bannerBox");
     let length = document.querySelectorAll(".bannerBox li").length;
-    let num = 0;
-
+    let num = 0; //设置一个初始值
+    //动画的函数
     function movefn() {
         num++;
         if (num === 1) {
@@ -67,13 +146,16 @@
     }
 
     let t = setInterval(movefn, 2000);
+    //给每个动画添加事件监听
     banner.addEventListener("transitionend", function () {
+        //判断当运行到最后一张的时候消除动画 让图片瞬间回到第一张
         if (num === length - 1) {
             banner.style.transition = "none";
             banner.style.marginLeft = 0;
             num = 0;
         }
     });
+    //失去焦点和获取到焦点的动画监听
     window.onfocus = function () {
         t = setInterval(movefn, 2000);
     };

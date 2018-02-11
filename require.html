@@ -27,14 +27,24 @@
 <textarea name="" id="" cols="100" rows="100" disabled>
     // 引入require.js文件   data-main不是script的标准属性    main.js是入口文件
     //<script data-main="scripts/main.js" src="scripts/require.js"></script>
-
+    //路径标准
     1.如果带有路径就会按照指定的路径去查找指定的文件。
     2.如果不带有路径首先查找的是核心模块
-    3.如果说不带有路径并且核心模块也没有的话，那么就会到当前目录的node-modules里面去查找相应的模块
-    4.如果说没有指定后缀名，默认会找后缀名是.js的文件，如果没有后缀名是.js的文件，那么会去找后缀名是.json的文件 如果说.json的文件也没有那么会找后缀名是.node的文件
+    3.如果说不带有路径并且核心模块也没有的话，那么就会到当前目录的node-modules里面去查找相应的模块 (如果当前文件夹下没有node-modules那么会去上级目录寻找，上级还没有再上级，直到找到根目录，根目录没有报错)
+    //后缀名标准
+    1.如果说没有指定后缀名，默认会找后缀名是.js的文件，如果没有后缀名是.js的文件，那么会去找后缀名是.json的文件 如果说.json的文件也没有那么会找后缀名是.node的文件
 
     //json 文件内必须是json语法
     //node 里面必须是c语言语法 (node和c语言可以完美融合)
+
+
+    //前端是
+    amd require.js
+    单线程异步机制->在单线程的基础上模拟多线程->同一时间程序能够执行多个任务。
+
+    //后端
+    cmd
+    里面是用require这个模块
 </textarea>
 </body>
 </html>
